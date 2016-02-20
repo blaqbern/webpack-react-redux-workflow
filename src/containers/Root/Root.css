@@ -1,0 +1,5 @@
+@import '../../sharedStyles/normalize.css';
+
+.root {
+  background: natural from '../../sharedStyles/colors.css';
+}

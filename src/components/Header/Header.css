@@ -1,0 +1,7 @@
+@value gray from '../../sharedStyles/colors.css';
+@value paper from '../../sharedStyles/colors.css';
+
+.header {
+  background: gray;
+  color: paper;
+}
