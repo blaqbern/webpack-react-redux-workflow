@@ -3,6 +3,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const development = process.env.NODE_ENV === 'development';
+const noDevtools = require('yargs').argv.no_devtools;
+
 const APP_ENTRY = path.join(__dirname, 'src', 'index.js');
 const VENDOR = [
   'react',
@@ -42,8 +45,8 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      __DEV__: process.env.NODE_ENV === 'development',
-      __NO_DEV_TOOLS__: process.env.DEVTOOLS === 'false',
+      __DEV__: development,
+      __NO_DEV_TOOLS__: noDevtools,
     }),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),

@@ -8,7 +8,7 @@
     "start": "npm run clean && node server",
     "dev": "better-npm-run dev",
     "prod": "better-npm-run prod",
-    "no-dev-tools": "better-npm-run no-dev-tools",
+    "no-devtools": "better-npm-run dev -- --no_devtools",
     "test": "npm run test"
   },
   "betterScripts": {
@@ -16,13 +16,6 @@
       "command": "npm start",
       "env": {
         "NODE_ENV": "development"
-      }
-    },
-    "no-dev-tools": {
-      "command": "npm start",
-      "env": {
-        "NODE_ENV": "development",
-        "DEVTOOLS": "false"
       }
     },
     "prod": {
