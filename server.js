@@ -8,14 +8,18 @@ const app = express();
 const compiler = webpack(webpackConfig);
 
 if (process.env.NODE_ENV === 'development') {
-  app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath,
-    stats: {
-      colors: true,
-    },
-  }));
-  app.use(require('webpack-hot-middleware')(compiler));
+  app.use(
+    require('webpack-dev-middleware')(compiler, {
+      noInfo: true,
+      publicPath: webpackConfig.output.publicPath,
+      stats: {
+        colors: true,
+      },
+    })
+  );
+  app.use(
+    require('webpack-hot-middleware')(compiler)
+  );
 }
 
 app.get('*', (req, res) =>
