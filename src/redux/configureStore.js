@@ -8,7 +8,7 @@ export default function configureStore() {
     const DevTools = require('../containers/DevTools').default;
     finalCreateStore = compose(
       applyMiddleware(thunk),
-      DevTools.instrument(),
+      DevTools.instrument()
     )(createStore);
   } else {
     finalCreateStore = applyMiddleware(thunk)(createStore);
