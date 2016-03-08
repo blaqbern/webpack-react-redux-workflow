@@ -1,18 +1,26 @@
 'use strict';
 
 const path = require('path');
+const fs = require('fs');
 const webpack = require('webpack');
 
 const development = process.env.NODE_ENV === 'development';
 const noDevtools = require('yargs').argv.no_devtools;
 
 const APP_ENTRY = path.join(__dirname, 'src', 'index.js');
-const VENDOR = [
-  'react',
-  'redux',
-  'redux-devtools',
-  'react-redux',
-];
+
+function grabDependencies(dependencies) {
+  const pkg = JSON.parse(fs.readFileSync('./package.json'))
+  return Object.keys(pkg.devDependencies)
+    .concat(Object.keys(pkg.dependencies))
+    .filter(dependency => dependencies.includes(dependency))
+}
+
+const VENDOR = grabDependencies([
+  /react[-]?[a-z]*/,
+  /redux[-]?[a-z]*/,
+])
+
 const BUILD_PATH = path.join(__dirname, 'public', 'build');
 
 const config = {

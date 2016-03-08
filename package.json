@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "clean": "rm -rf public/build",
-    "start": "npm run clean && node server",
+    "start": "node --harmony_array_includes server",
     "dev": "better-npm-run dev",
-    "prod": "better-npm-run prod",
+    "prod": "npm run clean && better-npm-run prod",
     "no-devtools": "better-npm-run dev -- --no_devtools",
     "test": "npm run test"
   },
