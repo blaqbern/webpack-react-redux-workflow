@@ -17,8 +17,8 @@ function grabDependencies(dependencies) {
 }
 
 const VENDOR = grabDependencies([
-  /react[-]?[a-z]*/,
-  /redux[-]?[a-z]*/,
+  /react([-][a-z]+)*/,
+  /redux([-][a-z]+)*/,
 ])
 
 const BUILD_PATH = path.join(__dirname, 'public', 'build');
