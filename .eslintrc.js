@@ -2,6 +2,7 @@ module.exports = {
   'rules': {
     'no-undef': 1,
     'react/jsx-no-bind': [2, { 'ignoreRefs': true }],
+    'semi': [2, 'never'],
   },
   'env': {
     'es6': true,
