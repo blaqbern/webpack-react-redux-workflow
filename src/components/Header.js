@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import styles from './Header.css';
+import styles from './css/Header.css';
 
 function Header({ title }) {
   return (
