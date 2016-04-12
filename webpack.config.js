@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
+const path = require('path')
+const fs = require('fs')
+const webpack = require('webpack')
 
-const development = process.env.NODE_ENV === 'development';
-const noDevtools = require('yargs').argv.no_devtools;
+const development = process.env.NODE_ENV === 'development'
+const noDevtools = require('yargs').argv.no_devtools
 
-const APP_ENTRY = path.join(__dirname, 'src', 'index.js');
+const APP_ENTRY = path.join(__dirname, 'src', 'index.js')
 
 function grabDependencies(dependencies) {
   const pkg = JSON.parse(fs.readFileSync('./package.json'))
@@ -21,7 +21,7 @@ const VENDOR = grabDependencies([
   /redux([-][a-z]+)*/,
 ])
 
-const BUILD_PATH = path.join(__dirname, 'public', 'build');
+const BUILD_PATH = path.join(__dirname, 'public', 'build')
 
 const config = {
   entry: {
@@ -48,8 +48,8 @@ const config = {
       // TODO add loaders for images, fonts, svg
     ],
   },
-  postcss: function() {
-    return [require('postcss-modules-values')];
+  postcss: function () {
+    return [require('postcss-modules-values')]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -60,9 +60,9 @@ const config = {
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
   ],
-};
+}
 
-let finalConfig;
+let finalConfig
 if (process.env.NODE_ENV === 'development') {
   finalConfig = Object.assign({}, config, {
     devtool: '#eval-source-maps',
@@ -80,9 +80,9 @@ if (process.env.NODE_ENV === 'development') {
       configFile: './.eslintrc.js',
     },
     plugins: config.plugins.concat([new webpack.HotModuleReplacementPlugin()]),
-  });
+  })
 } else {
-  finalConfig = config;
+  finalConfig = config
 }
 
-module.exports = finalConfig;
+module.exports = finalConfig

@@ -1,25 +1,25 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './rootReducer';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux'
+import rootReducer from './rootReducer'
+import thunk from 'redux-thunk'
 
-let finalCreateStore;
+let finalCreateStore
 export default function configureStore() {
   if (__DEV__ && !__NO_DEV_TOOLS__) {
-    const DevTools = require('../containers/DevTools').default;
+    const DevTools = require('../containers/DevTools').default
     finalCreateStore = compose(
       applyMiddleware(thunk),
       DevTools.instrument()
-    )(createStore);
+    )(createStore)
   } else {
-    finalCreateStore = applyMiddleware(thunk)(createStore);
+    finalCreateStore = applyMiddleware(thunk)(createStore)
   }
-  const store = finalCreateStore(rootReducer);
+  const store = finalCreateStore(rootReducer)
 
   if (__DEV__ && module.hot) {
     module.hot.accept('./rootReducer', () =>
       store.replaceReducer(require('./rootReducer'))
-    );
+    )
   }
 
-  return store;
+  return store
 }
