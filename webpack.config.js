@@ -65,7 +65,7 @@ const config = {
 let finalConfig
 if (process.env.NODE_ENV === 'development') {
   finalConfig = Object.assign({}, config, {
-    devtool: '#eval-source-maps',
+    devtool: '#eval-source-map',
     entry: {
       app: ['webpack-hot-middleware/client'].concat(config.entry.app),
       vendor: config.entry.vendor,
