@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../components/Header'
 import MainContent from '../components/MainContent'
-import DevTools from '../containers/DevTools'
+import DevTools from './DevTools'
 import styles from './css/root.css'
 
 class Root extends Component {

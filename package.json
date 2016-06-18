@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "clean": "rm -rf public/build",
-    "start": "node --harmony_array_includes server",
+    "start": "node --harmony_array_includes start.js",
     "dev": "better-npm-run dev",
     "prod": "npm run clean && better-npm-run prod",
     "no-devtools": "better-npm-run dev -- --no_devtools",
@@ -15,13 +15,16 @@
     "dev": {
       "command": "npm start",
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "PORT": 3000,
+        "DEV_SERVER_PORT": 8080
       }
     },
     "prod": {
       "command": "npm start",
       "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "PORT": 3000
       }
     }
   },
@@ -53,6 +56,7 @@
     "eslint-config-airbnb": "^5.0.1",
     "eslint-loader": "^1.2.1",
     "eslint-plugin-react": "^3.16.1",
+    "http-proxy": "^1.14.0",
     "postcss-loader": "^0.8.1",
     "postcss-modules-values": "^1.1.1",
     "react-dom": "^0.14.7",
